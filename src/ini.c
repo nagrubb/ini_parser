@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#define INI_MAX_STRING_LEN 256
+#define INI_LINE_BUFFER_LEN 512
+
 static bool ini_parse_new_section(const char* line, char section_name[INI_MAX_STRING_LEN]) {
 	if (sscanf(line, "[%[^]]", section_name) == 1) {
 		return true;
