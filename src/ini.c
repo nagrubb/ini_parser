@@ -15,7 +15,12 @@ static bool ini_parse_new_section(const char* line, char section_name[INI_MAX_ST
 }
 
 static bool ini_parse_key_value(const char* line, char key[INI_MAX_STRING_LEN], char value[INI_MAX_STRING_LEN]) {
-	if (sscanf(line, "%[^=]=%[^\0]", key, value) == 2) {
+	char equal = 0;
+	int parsed_values = 0;
+
+	parsed_values = sscanf(line, "%[^=]%[=]%[^\n]", key, &equal, value);
+
+	if (parsed_values == 3) {
 		return true;
 	}
 

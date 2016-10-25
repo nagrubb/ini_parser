@@ -18,9 +18,10 @@ bool callback(const char *section, char* field, char* value, ini_app_data_t app_
 
 int main(void) {
 	ini_result_e rval =
-		ini_pipe_modify("sample.conf", callback, "stuff", "out.conf")
+		ini_pipe_modify("sample.conf", callback, "stuff", "out.conf");
 
 	if (rval != INI_RESULT_SUCCESS) {
+		printf("ini_pipe_modify failed (rval: %d)!\n", rval);
 		return EXIT_FAILURE;
 	}
 
